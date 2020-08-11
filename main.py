@@ -11,20 +11,20 @@ def index():
         return '''
             <form method="post">
                 X: <input type="text" name="X" /
-                <p><input type="submit" name="operator" value="maxi" />
+                <p><input type="submit" name="operator" value="maximum" />
 
             </form>
         '''
     elif request.method == 'POST':
 # calculate result
         a = request.form.get('operator')
-        if a == 'maxi':
+        if a == 'maximum':
             X = request.form.get('X')
-            return redirect(url_for('maxi', X=X,))
+            return redirect(url_for('maximum', X=X,))
 
 
-@app.route('/maxi')
-def maxi():
+@app.route('/maximum')
+def maximum():
     dict = request.args.to_dict()
     X = eval(dict['X'])
     result = max(X)
