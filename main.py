@@ -13,8 +13,8 @@ def index():
                 X: <input type="text" name="X" /
                 <p><input type="submit" name="operator" value="mean" />
                 <input type="submit" name="operator" value="median" />
-                <input type="submit" name="operator" value="maxi" />
-                <input type="submit" name="operator" value="mini" />
+                <input type="submit" name="operator" value="maximum" />
+                <input type="submit" name="operator" value="minimum" />
             </form>
         '''
     elif request.method == 'POST':
@@ -28,13 +28,13 @@ def index():
             X = request.form.get('X')
             return redirect(url_for('median', X=X,))
 
-        if a == 'maxi':
+        if a == 'maximum':
             X = request.form.get('X')
-            return redirect(url_for('maxi', X=X,))
+            return redirect(url_for('maximum', X=X,))
 
-        if a == 'mini':
+        if a == 'minimum':
             X = request.form.get('X')
-            return redirect(url_for('mini', X=X,))
+            return redirect(url_for('minimum', X=X,))
 
 @app.route('/mean')
 def mean():
@@ -50,15 +50,15 @@ def median():
     result = statistics.median(X)
     return 'result: %s' % result
 
-@app.route('/maxi')
-def maxi():
+@app.route('/maximum')
+def maximum():
     dict = request.args.to_dict()
     X = eval(dict['X'])
     result = max(X)
     return 'result: %s' % result
 
-@app.route('/mini')
-def mini():
+@app.route('/minimum')
+def minimum():
     dict = request.args.to_dict()
     X = eval(dict['X'])
     result = min(X)
