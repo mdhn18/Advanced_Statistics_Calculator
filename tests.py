@@ -27,7 +27,7 @@ class TestOnlineCalculator(unittest.TestCase):
         self.assertEqual(b'78.0\n', response_data.data)
 
     def test_max(self):
-        response_data = self.app.get('/max?X=1,2,5,0,100'')
+        response_data = self.app.get('/max?X=1,2,5,0,100')
         self.assertEqual(b'100.0\n', response_data.data)
 
 if __name__ == '__main__':
