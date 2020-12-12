@@ -16,14 +16,14 @@ class TestOnlineCalculator(unittest.TestCase):
     def test_empty_page(self):
         """ Tests the page with no route"""
         response_data = self.app.get('/')
-        self.assertEqual(b'Usage;\n<Operation>?A=<Value1>&B=<Value2>\n', response_data.data)
+        self.assertEqual(b'Usage;\n<Operation>?X=<Value1, value2, value2, .... , valueN>\n', response_data.data)
 
         # Testing POST Method
         response_data = self.app.post('/')
-        self.assertEqual(b'Usage;\n<Operation>?A=<Value1>&B=<Value2>\n', response_data.data)
+        self.assertEqual(b'Usage;\n<Operation>?X=<Value1, value2, value2, .... , valueN>\n', response_data.data)
         
     def test_max(self):
-        response_data = self.app.get('/max?A=4,5,56,78')
+        response_data = self.app.get('/max?X=4,5,56,78')
         self.assertEqual(b'78.0\n', response_data.data)
         
 if __name__ == '__main__':
