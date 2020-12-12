@@ -28,7 +28,7 @@ class TestOnlineCalculator(unittest.TestCase):
 
     def test_median(self):
         response_data = self.app.get('/median?X=4,5,56,78')
-        self.assertEqual(b'0.5\n', response_data.data)
+        self.assertEqual(b'30.5\n', response_data.data)
 if __name__ == '__main__':
     unittest.main()
     
